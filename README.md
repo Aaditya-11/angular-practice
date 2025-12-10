@@ -1,27 +1,125 @@
-# AadityaTraining
+📘 Aaditya Angular Learning Hub
+My personal Angular training project with routing, forms, animations, and Material UI.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+This repository showcases my ongoing Angular learning journey.
+It contains multiple standalone components, routing setups, reusable UI widgets, Angular Material layouts, multi-step form flows, animations, data tables, API integration examples, and more — all organized for clarity and future reference.
 
-## Development server
+🚀 Features Included
+✔ Complete Angular 18 Learning Playground
+Routing & nested routing (standalone component-based routing)
+Navigation with mat-tab, custom menus, and route-to-route data transfer
+Parent → child communication (@Input)
+Child → parent communication (@Output + EventEmitter)
+Route parameters and dynamic loading
+Shared services (BehaviorSubject for component communication)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+✔ Angular Material UI
+Material form fields
+Material table (mat-table)
+Pagination, sorting
+Material popup dialogs (MatDialog)
+Snack bars for notifications
+Datepickers with server/SSR-safe usage
+Cards, grids, responsive layouts
 
-## Code scaffolding
+✔ Reusable Components
+Dynamic alert/notification component
+Popup modal component
+Reusable form sections
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+✔ Forms
+Reactive Forms
+Template-driven forms
+Validation and conditional enabling/disabling of buttons
+Multi-step forms (Register → Register2 → Register3 → Register4)
 
-## Build
+✔ Animations & UI Enhancements
+Terminal-style welcome animation (SYSTEM BOOTING… User: Aaditya)
+Blackhole / particle animation experiments
+Loader effects
+Smooth transitions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+✔ API Integration
+GET / POST API examples using HttpClient
+Generic REST service
+JSON-server mock API (db.json)
+Display API results in a Material table
+Handling long text formatting & UI alignment
 
-## Running unit tests
+✔ Practice Modules (Segregation Folder)
+Component-to-component data passing
+Parent routed → child routed cases
+Parent non-routed → child routed
+Understanding route parameters deeply
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+✔ HashBoard Components
+Job Info
+Family Info
+Courses module
+Form submissions & data flows
+Material layout visual consistency
 
-## Running end-to-end tests
+✔ Other Angular Concepts Covered
+Pipes (custom na pipe)
+Observables, Subjects & BehaviorSubject
+Form validation patterns
+MatTable dataSource binding
+MatDialog injection fixes
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 📁 Project Folder Structure
 
-## Further help
+```
+aaditya_training/
+│
+├── src/app/
+│   ├── Animations/
+│   │   └── welcome/
+│   ├── Dashboard/
+│   │   ├── account/
+│   │   ├── dynamic-form/
+│   │   ├── get-api.component/
+│   │   ├── home/
+│   │   ├── page/
+│   │   ├── pipe/
+│   │   ├── register/
+│   │   ├── register2/
+│   │   ├── register3/
+│   │   ├── register4/
+│   │   └── reusable-component/
+│   ├── data/
+│   │   └── db.json
+│   ├── HashBoard/
+│   │   ├── courses/
+│   │   ├── family-info/
+│   │   └── job-info/
+│   ├── model/
+│   ├── popup/
+│   ├── Segregation/
+│   │   ├── component-1/
+│   │   ├── component-2/
+│   │   └── component-3/
+│   ├── service/
+│   └── services/
+│
+├── angular.json
+├── package.json
+├── README.md
+└── tsconfig.json
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🛠️ Tech Stack
+Angular 18
+TypeScript
+Angular Material
+RxJS
+Standalone Components
+JSON Server (Mock APIs)
+Bootstrap (for some styling)
+SCSS/CSS animations
+
+▶️ How to Run This Project
+git clone https://github.com/<your-username>/<your-repo>.git
+cd aaditya_training
+npm install
+npm start
+App will run at:http://localhost:4200/
