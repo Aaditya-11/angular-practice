@@ -1,0 +1,39 @@
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.info-card {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.item {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.link {
+  color: #1976d2;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #0d47a1;
+}
+
+.btn-box {
+  text-align: center;
+  margin-top: 15px;
+}
+:host {
+  display: block;
+  max-height: 80vh;   /* same as dialog */
+  overflow-y: auto;   /* enables scroll */
+  padding-right: 10px; /* avoids hiding scrollbar */
+}
+

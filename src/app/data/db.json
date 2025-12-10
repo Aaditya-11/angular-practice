@@ -1,0 +1,109 @@
+{ 
+    "employee":[
+        {
+            "code":"1",
+            "name":"Aaditya",
+            "salary":5000,
+            "address":"mumbai",
+            "DOB":"11/03/2003"
+        },
+        {
+            "code":"2",
+            "name":"Tejas",
+            "salary":10000,
+            "address":"kolkata",
+            "DOB":"12/03/2000"
+            
+        },
+        {
+            "code":"3",
+            "name":"Anas",
+            "salary":1000000,
+            "address":"Chennai",
+            "DOB":"4/03/1964"
+            
+        },
+        {
+            "code":"4",
+            "name":"Amisha",
+            "salary":1234459,
+            "address":"surat",
+            "DOB":"15/03/2000"
+            
+        },
+        {
+            "code":"5",
+            "name":"Rohit",
+            "salary":15000,
+            "address":"pune",
+            "DOB":"18/03/2000"
+            
+        },
+        {
+            "code":"6",
+            "name":"Rohan",
+            "salary":30000,
+            "address":"kolhpur",
+            "DOB":"12/03/2000"
+            
+        },
+        {
+            "code":"7",
+            "name":"Parth",
+            "salary":50000,
+            "address":"banaras",
+            "DOB":"18/03/2000"
+            
+        },
+        {
+            "code":"8",
+            "name":"Manas",
+            "salary":40000,
+            "address":"banglore",
+            "DOB":"20/03/2000"
+            
+        },
+        {
+            "code":"9",
+            "name":"Mayur",
+            "salary":60000,
+            "address":"goa",
+            "DOB":"1/03/2000"
+            
+        },
+        {
+            "code":"10",
+            "name":"Purva",
+            "salary":12000,
+            "address":"kerla",
+            "DOB":"22/03/2000"
+            
+        },
+        {
+            "code":"11",
+            "name":"Raj",
+            "salary":19000,
+            "address":"Manglore",
+            "DOB":"24/03/2000"
+            
+        },
+        {
+            "code":"12",
+            "name":"Kunal",
+            "salary":15000,
+            "address":"jalgaon",
+            "DOB":"16/03/2000"
+            
+        },
+        {
+            "code":"13",
+            "name":"Sonali",
+            "salary":100000,
+            "address":"West bengal",
+            "DOB":"26/03/2000"
+            
+        }
+        
+    ]
+
+}

@@ -1,0 +1,29 @@
+<!-- Resuable Component -->
+ @if (type) {
+<div *ngIf="type === 'success'" class="alert alert-success">
+  <strong>Success!</strong> Welcome to Table Component
+</div>
+<div *ngIf="type === 'alert'" class="alert alert-info">
+  <strong>Success!</strong> Welcome to Pipe Component
+</div>
+<div *ngIf="type === 'warning'" class="alert alert-warning">
+  <strong>Success!</strong> Welcome to Get Api Component
+</div>
+<div *ngIf="type === 'danger'" class="alert alert-danger">
+  <strong>Success!</strong> Welcome to Home Component
+</div>
+<div *ngIf="type === 'primary'" class="alert alert-primary">
+  <strong>Success!</strong> Welcome to Account Component
+</div>
+<div *ngIf="type === 'secondary'" class="alert alert-secondary">
+  <strong>Success!</strong> Welcome to Page Component
+</div>
+}
+
+<!-- Mode 2: Show MESSAGE-BASED alert (only for Register2) -->
+@if (types) {
+<!-- Child-parent -->
+<div class="alert alert-dark">
+  <strong>Success!</strong> {{ types }}
+</div>
+}

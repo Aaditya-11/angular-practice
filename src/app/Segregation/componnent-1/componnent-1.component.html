@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-primary">My Work</a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/app-pipe" routerLinkActive="active-link">Pipe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/table" routerLinkActive="active-link">Table</a>
+           <!-- <a class="nav-link" [routerLink]="['/table', userName,userProfile]" routerLinkActive="active-link">Table</a> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/app-get-api.component" routerLinkActive="active-link">Get Api</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/home" routerLinkActive="active-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/account" routerLinkActive="active-link">Account</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active-link">Register</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/page" routerLinkActive="active-link">Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/register2" routerLinkActive="active-link">Register 2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/register3" routerLinkActive="active-link">Register 3</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/register4" routerLinkActive="active-link">Register 4</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/app-componnent-1/dynamic-form" routerLinkActive="active-link">Dynamic Form</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<mat-progress-bar  *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<!-- Routed components will render here -->
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+

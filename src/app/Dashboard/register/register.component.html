@@ -1,0 +1,17 @@
+<form method="post">
+    <input type = "text" placeholder="Enter the name" [formControl]="name" ><br>
+    <br>
+    <input type = "password" placeholder="Enter the Password" [formControl]="password"><br>
+    <button type ="button" (click)="displayValue()">Login</button>
+    <button type ="button" (click)="resetValue()">Reset</button>
+    <h3>{{name.value}}</h3>
+    <h3>{{password.value}}</h3>
+</form>
+
+<!-- <app-child (getUsers)="receiveUsers($event)"></app-child>
+<p>Users from Child:</p>
+<div *ngFor="let u of parentUsers">{{ u }}</div> -->
+
+
+<!-- Child to Parent child as usercomponent parent as registercomponent -->
+<app-user (childEvent)="handleChild($event)"></app-user>

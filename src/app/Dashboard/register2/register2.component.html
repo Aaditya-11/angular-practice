@@ -1,0 +1,31 @@
+<app-alert [types]="'Welcome to Register 2 Component'"></app-alert>
+<form method="post" [formGroup]="profileForm">
+
+        <!-- in form group use form control name -->
+        <input class="sl" type = "text" placeholder="Enter the name" formControlName="name" ><br>
+        <span class="sl" *ngIf="name?.hasError('required')">Name is required</span><br>
+        <span style="margin-top: 10px; margin-left: 550px;" class="error"  *ngIf="name?.invalid &&(name?.dirty|| name?.touched)">Please provide name</span><br>
+        
+        <input class="sl" type = "password" placeholder="Enter Password" formControlName="password" ><br>
+        <span class="sl" *ngIf="a?.hasError('required')">Password is required</span><br>
+        <span style="margin-top: 10px; margin-left: 550px;" class="error"  *ngIf="a?.invalid &&(a?.dirty|| a?.touched)">Please provide valid password</span><br>
+        
+        <input class="sl" type="number" placeholder="Enter Age" formControlName="age"><br>
+        <span class="sl" *ngIf="age?.hasError('required')">Age is required</span><br>
+        <span style="margin-top: 10px; margin-left: 550px;" class="error"  *ngIf="age?.invalid &&(age?.dirty|| age?.touched)">Please provide Age</span><br>
+        
+        <input class="sl" type = "email" placeholder="Enter the email" formControlName="email" ><br>
+        <span class="sl" *ngIf="email?.hasError('required')">Email is required</span><br>
+        <span style="margin-top: 10px; margin-left: 550px;" class="error"  *ngIf="email?.invalid &&(email?.dirty|| email?.touched)">Please provide valid email</span><br>
+
+        <select style="margin-top: 10px; margin-left: 550px;" formControlName="gender">
+            <option value="">Select Gender</option>
+            <option valur="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
+        <span class="sl" *ngIf="gender?.hasError('required')">Gender is required</span><br>
+        <span style="margin-top: 10px; margin-left: 550px;" class="error" *ngIf="gender?.invalid &&(gender?.dirty || gender?.touched)">Gender is required</span>
+        <br>
+        <button style="margin-top: 10px; margin-left: 550px;" type ="button" (click)="onSubmit()" >Login</button>
+        <button class="ml" type ="button" (click)="reset()" >Reset</button>
+</form>

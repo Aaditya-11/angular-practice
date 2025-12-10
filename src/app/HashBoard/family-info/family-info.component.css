@@ -1,0 +1,47 @@
+.container {
+  width: 450px;
+  margin: auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.col {
+  flex: 1;
+}
+
+.full {
+  width: 100%;
+}
+
+.upload-label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.upload-btn {
+  width: 100%;
+  background: black;
+  color: white;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: black;
+  color: white;
+}

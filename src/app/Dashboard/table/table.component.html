@@ -1,0 +1,289 @@
+<app-alert type="success"></app-alert>
+<!-- Using ngIf ngFor ngClass ngStyle -->
+<div class="row pt-3">
+    <div class="col-3">
+        <!-- Hide or show the elents in the dom using hide/show button -->
+        <!-- <div *ngIf="hideShowDiv1" class="bg-danger p-3 text-center"> -->
+        <div *ngIf="hideShowDiv1" class="p-3 text-center" [ngClass]="changeColor">
+            <h4>Div-1</h4>
+        </div>
+    </div>
+    <!-- Using Toggle Hide or show the elents in the dom using hide/show button -->
+    <div class="col-3">
+        <!-- <div *ngIf="hideShowDiv2" class="bg-success p-3 text-center"> -->
+        <div class="p-3 text-center" *ngIf="hideShowDiv2" [ngClass]="isColor == true ? 'bg-success': 'bg-warning'">
+            <h4>Div-2</h4>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <!-- <div *ngIf="num1 === num2" class="bg-secondary p-3 text-center"> -->
+        <div [ngClass]="num1 === num2 ? 'bg-warning': 'bg-success'" class=" p-3 text-center">
+            <h4>Div-3</h4>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div *ngIf="selectedState == 'Goa'" class="bg-danger p-3 text-center">
+            <!-- <div *ngIf="['Goa','Maharashtra'].includes(selectedState)" class="bg-danger p-3 text-center"> -->
+            <!-- <div *ngIf="selectedState" class="bg-danger p-3 text-center">You selected: {{ selectedState }}  -->
+            <h4>Div-4</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button class="btn btn-danger" (click)="hideButton()">Hide</button>
+        <button class="btn btn-primary mx-2" (click)="showButton()">Show</button>
+        <button class="btn btn-success" (click)="greenButton()">Green</button>
+        <button class="btn btn-primary mx-2" (click)="blueButton()">Blue</button>
+    </div>
+    <div class="col-3 text-center">
+        <button class="btn btn-success" (click)="toggleButton()">Toggle</button>
+        <button class="btn btn-success mx-2" (click)="toggleColor()">Toggle Color</button>
+    </div>
+    <div class="col-3 text-center">
+        <div class="d-flex align-items-center gap-2">
+            <!-- <input type="text" class="form-control" [(ngModel)]="num1" placeholder="Enter number" /> -->
+            <!-- <input type="text" class="form-control" [(ngModel)]="num2" placeholder="Enter number" /> -->
+            <input type="text" class="form-control" [(ngModel)]="num1" placeholder="Enter number" />
+            <input type="text" class="form-control" [(ngModel)]="num2" placeholder="Enter number" />
+        </div>
+
+    </div>
+    <div class="col-3">
+        <div class="d-flex align-items-center">
+            <!-- <input type="checkbox" (click)="onCheckBox()"/> -->
+            <!-- <input type="checkbox" [(ngModel)]="isChecked"/> -->
+            <select class="form-select" [(ngModel)]="selectedState">
+                <option value="">Select state option</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Goa">Goa</option>
+                <option value="Kashmir">Kashmir</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button (click)="showNext()" class="btn btn-primary">Show Next</button>
+        <ul>
+            <li *ngFor="let city of cities | slice:0:count">{{ city }}</li>
+        </ul>
+    </div>
+    <!-- navigate to other component using html -->
+    <div class="col-3 text-center">
+        <button class="btn btn-primary" [routerLink]="['/app-componnent-1/dynamic-form']">Dynamic Form</button>
+    </div>
+    <!-- navigate to other component using function/ts -->
+    <div class="col-3 text-center">
+        <button class="btn btn-primary" (click)="goToRegister3()">Register 3</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-5">
+        <table class="table table-boardered">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Student Name</th>
+                    <th>Color Active</th>
+                    <th>Home City</th>
+                    <th>Marks</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList , let srNo = index">
+                    <td>{{srNo +1}}</td>
+                    <td>{{student.name}}</td>
+                    <td [ngStyle]="{'background-color': student.iscolor ? 'yellow' : 'red'}">
+                        <span>{{student.iscolor ? 'true' : 'false'}}</span>
+                    </td>
+                    <td>{{student.city}}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40"
+                                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ 'width': student.marks + '%' }"
+                                [ngClass]="{'bg-success': student.marks > 80,'bg-warning': student.marks >= 50 && student.marks <= 80,'bg-danger': student.marks < 50}">
+                                {{student.marks}}</div>
+                        </div>
+                    </td>
+                    <!-- <td>{{student.isActive}}</td> -->
+                    <td>
+                        <span *ngIf="student.isActive">Active</span>
+                        <span *ngIf="!student.isActive">Not Active</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Using @if @else @for @switch-->
+
+<div class="row pt-3">
+    <div class="col-3">
+        <!-- Hide or show the elents in the dom using hide/show button -->
+        @if(div1Visible){
+        <div class="bg-danger p-3 text-center">
+            <h4>Div-1</h4>
+        </div>
+        }
+    </div>
+    <!-- Using Toggle Hide or show the elents in the dom using hide/show button -->
+    <div class="col-3">
+        @if(div2Visible == true){
+        <div class="bg-success p-3 text-center">
+            <h4>Div-2</h4>
+        </div>
+        } @else {
+        <div class="bg-warning p-3 text-center">
+            <h4>Div-2</h4>
+        </div>
+        }
+    </div>
+
+    <div class="col-3">
+        @if(num1OfDiv3 == num2OfDiv3){
+        <div class="bg-secondary p-3 text-center">
+            <h4>Div-3</h4>
+        </div>
+        } @else{
+        <div class="bg-success p-3 text-center">
+            <h4>Div-3</h4>
+        </div>
+        }
+
+    </div>
+
+    <div class="col-3">
+        <div class="bg-danger p-3 text-center">
+            @if(selectedStatus == 'Active'){
+            <p>Student is Active</p>
+            } @else if(selectedStatus == 'De-active'){
+            <p>Student is De-active</p>
+            } @else if(selectedStatus == 'Pending'){
+            <p>Student is Pending</p>
+            } @else {
+            <p>Select Status</p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button class="btn btn-danger" (click)="hide()">Hide</button>
+        <button class="btn btn-primary mx-2" (click)="show()">Show</button>
+    </div>
+    <div class="col-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv()">Toggle</button>
+    </div>
+    <div class="col-3 text-center">
+        <div class="d-flex align-items-center gap-2">
+            <input type="text" class="form-control" [(ngModel)]="num1OfDiv3" placeholder="Enter number" />
+            <input type="text" class="form-control" [(ngModel)]="num2OfDiv3" placeholder="Enter number" />
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="d-flex align-items-center">
+            <select class="form-select" [(ngModel)]="selectedStatus">
+                <option value="">Select Status</option>
+                <option value="Active">Active</option>
+                <option value="De-active">De-active</option>
+                <option value="Pending">Pending</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button (click)="showNext()" class="btn btn-primary">Show Next</button>
+        <ul>
+            @for (area of cities.slice(0, count); track $index) {
+            <li>{{ area }}</li>
+            } @empty {
+            <p>No students found</p>
+            }
+        </ul>
+    </div>
+
+    <div class="col-3 text-center">
+        <select class="form-select">
+            @for (area of cities; track $index) {
+            <option>{{ area }}</option>
+            }
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-5">
+        <table class="table table-boardered">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Student Name</th>
+                    <th>Color Active</th>
+                    <th>Home City</th>
+                    <th>Marks</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (student of studentList; track $index) {
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.iscolor }}</td>
+                    <td>{{ student.city }}</td>
+                    <td>{{ student.marks }}</td>
+                    <td>{{ student.isActive }}</td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<div class="row pt-3">
+                <!-- This is using normal ngSwitch not @switch -->
+    <!-- <div class="col-3">
+        <div [ngSwitch]="dayNumber">
+            <input type="number" placeholder="Enter days of the week" [(ngModel)]="dayNumber" />
+            <span *ngSwitchCase="1">Monday</span>
+            <span *ngSwitchCase="2">Tuesday</span>
+            <span *ngSwitchCase="3">Wednesday</span>
+            <span *ngSwitchCase="4">Thursday</span>
+            <span *ngSwitchCase="5">Friday</span>
+            <span *ngSwitchCase="6">Saturday</span>
+            <span *ngSwitchCase="7">Sunday</span>
+            <span *ngSwitchDefault>Invalid day</span>
+        </div>
+
+    </div> -->
+                <!-- This is using @switch -->
+
+    <div class="col-3">
+        <input type="number" placeholder="Enter days of the week" [(ngModel)]="dayNumber" />
+    </div>
+    <!-- [(ngModelChange)]="onChange()" -->
+
+    <div class="col-3">
+        Day Name is :
+        @switch (dayNumber){
+        @case(1){<span>Monday</span>}
+        @case(2){<span>Tuesday</span>}
+        @case(3){<span>Wednesday</span>}
+        @case(4){<span>Thursday</span>}
+        @case(5){<span>Friday</span>}
+        @case(6){<span>Saturday</span>}
+        @case(7){<span>Sunday</span>}
+        @default  {<span class="text-danger">Wrong input</span>}
+        }
+    </div>
+
+</div>

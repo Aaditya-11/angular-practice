@@ -1,0 +1,67 @@
+<h1 class="title">Check Your Data</h1>
+
+<!-- JOB INFO CARD -->
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>Job Information</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="item"><strong>Full Name:</strong> {{ (data.job.firstName + ' ' + data.job.lastName).trim() }}</div>
+    <div class="item"><strong>Address:</strong> {{ data.job.street1 }}</div>
+    <div class="item"><strong>City:</strong> {{ data.job.city }}</div>
+    <div class="item"><strong>State:</strong> {{ data.job.state }}</div>
+    <div class="item"><strong>Postal:</strong> {{ data.job.postal }}</div>
+    <div class="item"><strong>Email:</strong> {{ data.job.email }}</div>
+    <div class="item"><strong>Phone:</strong> {{ data.job.phone }}</div>
+    <div class="item"><strong>Position:</strong> {{ data.job.position }}</div>
+    <div class="item"><strong>Start Date:</strong> {{ data.job.startDate | date }}</div>
+
+    <div class="item">
+      <strong>Resume:</strong>
+      <ng-container *ngIf="data.job.resume; else noFile">
+        <a (click)="downloadResume()" class="link">
+          {{ data.job.resume.name }}
+        </a>
+      </ng-container>
+
+      <ng-template #noFile>
+        No Resume Uploaded
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- FAMILY INFO CARD -->
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>Family Information</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="item"><strong>Father Name:</strong> {{ data.family.fatherName }}</div>
+    <div class="item"><strong>Mother Name:</strong> {{ data.family.motherName }}</div>
+    <div class="item"><strong>Address:</strong> {{ data.family.street1 }}</div>
+    <div class="item"><strong>City:</strong> {{ data.family.city }}</div>
+    <div class="item"><strong>State:</strong> {{ data.family.state }}</div>
+    <div class="item"><strong>Postal Code:</strong> {{ data.family.postal }}</div>
+    <div class="item"><strong>Country:</strong> {{ data.family.country }}</div>
+    <div class="item"><strong>Father Email:</strong> {{ data.family.femail }}</div>
+    <div class="item"><strong>Mother Email:</strong> {{ data.family.memail }}</div>
+    <div class="item"><strong>Father's Job:</strong> {{ data.family.fjobrole }}</div>
+    <div class="item"><strong>Mother's Job:</strong> {{ data.family.mjobrole }}</div>
+    <div class="item"><strong>Father DOB:</strong> {{ data.family.fdob | date  }}</div>
+    <div class="item"><strong>Mother DOB:</strong> {{ data.family.mdob | date }}</div>
+  </mat-card-content>
+</mat-card>
+
+<div class="btn-box">
+  <button mat-stroked-button color="warn" (click)="dialogRef.close()">
+    Close
+  </button>
+
+  <button mat-raised-button color="primary" (click)="saveData()">
+    Save
+  </button>
+</div>

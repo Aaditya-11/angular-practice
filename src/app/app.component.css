@@ -1,0 +1,73 @@
+/* Smooth hover effect */
+.nav-link {
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  background-color: #0d6efd; /* Bootstrap primary */
+}
+
+/* Active link highlight */
+.active-link {
+  color: #fff !important;
+  background-color: #0d6efd !important;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Navbar brand hover */
+.navbar-brand:hover {
+  color: #0a58ca !important;
+}
+/* TAB GROUP BACKGROUND */
+::ng-deep .mat-mdc-tab-group {
+  background: #1a0833 !important; /* same as welcome bg */
+  padding: 8px 16px;
+}
+
+/* INACTIVE TAB STYLE */
+::ng-deep .mat-mdc-tab {
+  background: transparent !important;
+  color: #ffffffcc !important; /* soft white text */
+  border: 1px solid #ff008c55 !important; /* neon border */
+  border-radius: 20px !important;
+  margin-right: 12px !important;
+  padding: 0 20px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: 0.3s ease;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+}
+
+/* HOVER EFFECT — NEON PINK GLOW */
+::ng-deep .mat-mdc-tab:hover {
+  color: #ffffff !important;
+  border-color: #ff008c !important;
+  box-shadow: 0 0 10px #ff008c;
+}
+
+/* ACTIVE TAB (selected) */
+::ng-deep .mat-mdc-tab.mdc-tab--active {
+  background: #ff008c !important;
+  color: #fff !important;
+  border-color: #ff008c !important;
+  box-shadow: 0 0 15px #ff008c !important;
+  font-weight: 600 !important;
+}
+
+/* REMOVE MATERIAL UNDERLINE */
+::ng-deep .mat-mdc-tab-indicator {
+  display: none !important;
+}
+.success-snackbar {
+  background-color: #4caf50 !important; /* Green */
+  color: white !important;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

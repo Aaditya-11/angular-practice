@@ -1,0 +1,16 @@
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* spacing between fields */
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  display: block; /* ensures error messages push content below */
+  width: 100%;
+}

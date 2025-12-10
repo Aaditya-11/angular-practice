@@ -1,0 +1,163 @@
+<div class="container mt-5">
+  <div class="card shadow-lg rounded-3">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Profile Form</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <!-- First & Last Name -->
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstname" placeholder="Enter First Name">
+            <div class="text-danger small" *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)">
+              <small *ngIf="firstname?.errors?.['required']">First Name is required</small>
+              <small *ngIf="firstname?.errors?.['pattern']">Invalid First Name</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Enter Last Name">
+            <div class="text-danger small" *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
+              <small *ngIf="lastname?.errors?.['required']">Last Name is required</small>
+              <small *ngIf="lastname?.errors?.['pattern']">Invalid Last Name</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email & Phone -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter Email">
+            <div class="text-danger small" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <small *ngIf="email?.errors?.['required']">Email is required</small>
+              <small *ngIf="email?.errors?.['pattern']">Invalid Email</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" formControlName="phone" placeholder="Enter Phone Number">
+            <div class="text-danger small" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+              <small *ngIf="phone?.errors?.['required']">Phone is required</small>
+              <small *ngIf="phone?.errors?.['maxlength']">Phone number too long</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="mb-4">
+          <h5>Education Details</h5>
+          <button type="button" class="btn btn-success btn-sm mb-2" (click)="addEducation()">+ Add Education</button>
+
+          <div formArrayName="educationdata">
+            <div *ngFor="let edu of educationdata.controls; let i = index" [formGroupName]="i" class="card mb-3 p-3 border-secondary">
+              
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label">School/College</label>
+                  <input type="text" class="form-control" formControlName="schoolName">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Degree</label>
+                  <select class="form-select" formControlName="degree">
+                    <option value="">Select Degree</option>
+                    <option value="SCHOOL">School</option>
+                    <option value="BACHELOR">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="PHD">PhD</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Field of Study</label>
+                  <input type="text" class="form-control" formControlName="fieldofstudy">
+                </div>
+              </div>
+
+              <div class="row g-3 mt-2">
+                <div class="col-md-3">
+                  <label class="form-label">Start Date</label>
+                  <input type="date" class="form-control" formControlName="startDt">
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">End Date</label>
+                  <input type="date" class="form-control" formControlName="endDt">
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Grade</label>
+                  <input type="text" class="form-control" formControlName="grade">
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button type="button" class="btn btn-danger w-100" (click)="removeEducation(i)">Remove</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Save</button>
+        </div>
+
+        <!-- Submitted Data Section -->
+<div class="mt-5" *ngIf="submittedData.length > 0">
+  <h4>Submitted Data</h4>
+
+  <div *ngFor="let data of submittedData; let idx = index" class="mb-5">
+    <h5>Entry {{ idx + 1 }}</h5>
+
+    <!-- Basic Info Table -->
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ data.firstname }}</td>
+          <td>{{ data.lastname }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Education Table -->
+    <table class="table table-bordered table-striped mt-3" *ngIf="data.educationdata.length > 0">
+      <thead class="table-light">
+        <tr>
+          <th>School/College</th>
+          <th>Degree</th>
+          <th>Field of Study</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let edu of data.educationdata">
+          <td>{{ edu.schoolName }}</td>
+          <td>{{ edu.degree }}</td>
+          <td>{{ edu.fieldofstudy }}</td>
+          <td>{{ edu.startDt }}</td>
+          <td>{{ edu.endDt }}</td>
+          <td>{{ edu.grade }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+      </form>
+    </div>
+  </div>
+</div>

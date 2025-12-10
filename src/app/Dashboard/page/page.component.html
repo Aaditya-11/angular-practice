@@ -1,0 +1,12 @@
+<app-alert type="secondary"></app-alert>
+<!-- <h2>This is Parent Page</h2>
+<div *ngIf="!isRegisterRoute()"></div>
+<button (click)="goToRegister()">Go to Register Form (TS)</button> -->
+
+@if (!isRegisterRoute()) {
+  <h2>This is Parent Page</h2>
+  <button (click)="goToRegister()">Go to Register Form (TS)</button>
+}
+
+<!-- Child will load here -->
+<router-outlet></router-outlet>

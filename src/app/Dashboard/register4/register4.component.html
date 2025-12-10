@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Driven Form</title>
+</head>
+
+<body>
+    <form  #userForm="ngForm" (ngSubmit)="addDetails(userForm.value) ">
+        <input  #name="ngModel" type="text" maxlength="40" pattern="^[a-zA-Z ]*$" required placeholder="Enter name" name="name" ngModel><br> 
+        <span class="error" *ngIf="name.invalid && name.touched">Name is Required</span>
+        <br>
+        <input  #password="ngModel" minlength="5" type="text" required placeholder="Enter password" name="password" ngModel><br>
+        <span class="error" *ngIf="password.invalid && password.touched">Please enter valid Password</span>
+        <br>
+        <input #email="ngModel" maxlength="50" email type="text" required  placeholder="Enter email" name="email" ngModel><br>
+        <span class="error" *ngIf="email.invalid && email.touched">Please enter valid email</span>
+        <br>
+        <input #address="ngModel" maxlength="50" type="text"  pattern="^[A-Za-z0-9\s,.\-/]+$" required  placeholder="Enter address" name="address" ngModel><br>
+        <span class="error" *ngIf="address.invalid && address.touched">Please enter valid address</span>
+        <br>
+        <select #gender="ngModel" name="gender" required ngModel>
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <span class="error" *ngIf="gender.invalid && gender.touched">Please select gender</span>
+        <br>
+        <input type="range" min="0" max="20" name="range" ngModel>
+        <br><br>
+        <button [disabled]="userForm.invalid">Add User</button>
+
+    </form>
+    <h3>{{userDetails?.name}}</h3>
+    <h3>{{userDetails?.password}}</h3>
+    <h3>{{userDetails?.gender}}</h3>
+    <h3>{{userDetails?.range}}</h3>
+</body>
+
+</html> -->
+
+
+<form class="mt-4" #form="ngForm">
+    <div class="mb-3 col-6 mx-auto">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" name="firstname" #fName="ngModel" [(ngModel)]="studentObj.firstname" pattern="^[a-zA-Z ]*$" required minlength="2" (keypress)="allowOnlyLetters($event)"/>
+        <div class="text-danger">
+            @if((fName.touched||fName.dirty)&&fName.errors?.['required']){
+                <span>Name is Required</span>
+            } @else if((fName.touched||fName.dirty)&&fName.errors?.['minlength']){
+                <span>Name must atleast two alphabets</span>
+            }
+        </div>
+    </div>
+    <div class="mb-3 col-6 mx-auto">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lastname" #lName="ngModel" [(ngModel)]="studentObj.lastname" pattern="^[a-zA-Z ]*$" required minlength="2" (keypress)="allowOnlyLetters($event)"/>
+        <div class="text-danger">
+            @if((lName.touched||lName.dirty)&&lName.errors?.['required']){
+                <span>Last name is Required</span>
+            } @else if((lName.touched||lName.dirty)&&lName.errors?.['minlength']){
+                <span>Last name must atleast two alphabets</span>
+            }
+        </div>
+    </div>
+    <div class="mb-3 col-6 mx-auto">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3 col-6 mx-auto">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check col-6 mx-auto">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="d-flex justify-content-center gap-3 mt-3">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
+        <button type="reset" class="btn btn-secondary"(click)="onReset()">Reset</button>
+    </div>
+    <div class="d-flex justify-content-center gap-3 mt-3">
+       The Submitted data :{{data | json}}
+    </div>
+</form>

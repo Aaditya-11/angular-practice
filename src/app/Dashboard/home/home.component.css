@@ -1,0 +1,10 @@
+.search-bar {
+  padding-left: 40px;  /* 👈 works better than margin-left inside flex layouts */
+  margin-top: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box; /* ensures padding doesn’t overflow */
+}
+
+
+ 
