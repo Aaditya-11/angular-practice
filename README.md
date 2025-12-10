@@ -4,6 +4,9 @@ My personal Angular training project with routing, forms, animations, and Materi
 This repository showcases my ongoing Angular learning journey.
 It contains multiple standalone components, routing setups, reusable UI widgets, Angular Material layouts, multi-step form flows, animations, data tables, API integration examples, and more — all organized for clarity and future reference.
 
+### 🚀 Welcome Animation Screen
+<img width="1350" height="630" alt="Welcome Screen" src="https://github.com/user-attachments/assets/ca9d1ac0-7fe6-4521-9ce9-e1a71b59eeb2" />
+
 🚀 Features Included
 ✔ Complete Angular 18 Learning Playground
 Routing & nested routing (standalone component-based routing)
