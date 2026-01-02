@@ -5,12 +5,13 @@ import { Observable, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NaPipe } from '../../na.pipe';
 import { AlertComponent } from '../reusable-component/alert/alert.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-pipe',
   standalone: true,
-  imports: [UpperCasePipe,LowerCasePipe,TitleCasePipe,DatePipe,CurrencyPipe,DecimalPipe,PercentPipe,JsonPipe,AsyncPipe,NaPipe,AlertComponent],
+  imports: [CommonModule,UpperCasePipe,LowerCasePipe,TitleCasePipe,DatePipe,CurrencyPipe,DecimalPipe,PercentPipe,JsonPipe,AsyncPipe,NaPipe,AlertComponent],
   templateUrl: './pipe.component.html',
   styleUrl: './pipe.component.css'
 })
@@ -33,5 +34,15 @@ student:any = {
         map(() => new Date())
       );
     }
+  }
+  isLoggedIn:boolean = true;
+  isLogged:boolean=false;
+  userName = 'Aaditya';
+  userRole = 'Angular Developer';
+  show = false;
+  shows = false;
+
+  toggle() {
+    this.show = !this.show;
   }
 }

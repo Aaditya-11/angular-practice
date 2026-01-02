@@ -25,12 +25,12 @@ import { CoursesComponent } from './HashBoard/courses/courses.component';
 import { FamilyInfoComponent } from './HashBoard/family-info/family-info.component';
 import { MatTabGroup } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ MatSnackBarModule,MatTabGroup,FamilyInfoComponent,RouterOutlet,CoursesComponent,WelcomeComponent,MatTabsModule,MatButtonModule,Componnent1Component,Componnent2Component,PipeComponent,CommonModule,PageComponent,HomeComponent,TableComponent,RegisterComponent,AccountComponent,RouterLink,ReactiveFormsModule,Register2Component,Register3Component,Register4Component,DynamicFormComponent,GetApiComponentComponent,MatProgressBarModule],
+  imports: [ MatSnackBarModule,MatTabGroup,FamilyInfoComponent,RouterOutlet,CoursesComponent,WelcomeComponent,MatTabsModule,MatButtonModule,Componnent1Component,Componnent2Component,PipeComponent,CommonModule,PageComponent,HomeComponent,TableComponent,RegisterComponent,AccountComponent,RouterLink,ReactiveFormsModule,Register2Component,Register3Component,Register4Component,DynamicFormComponent,GetApiComponentComponent,MatProgressBarModule,LoginComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -43,7 +43,7 @@ export class AppComponent {
   //   }, 5000); // 15000 ms = 15 seconds
   // }
 
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
 //   comp1: boolean = false;
 //   comp2: boolean = false;

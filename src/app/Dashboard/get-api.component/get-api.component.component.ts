@@ -3,19 +3,43 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import {MatFormField,MatFormFieldModule,MatLabel} from '@angular/material/form-field';
+import {
+  MatFormField,
+  MatFormFieldModule,
+  MatLabel,
+} from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {FormBuilder,FormGroup,FormsModule,ReactiveFormsModule,Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SharedService } from '../../services/shared.service';
 import { AlertComponent } from '../reusable-component/alert/alert.component';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-get-api.component',
   standalone: true,
-  imports: [CommonModule,MatButtonModule,MatTableModule,MatLabel,MatFormFieldModule,FormsModule,MatInputModule,ReactiveFormsModule,MatCheckboxModule,AlertComponent,MatGridListModule,MatProgressBarModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatTableModule,
+    MatLabel,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    AlertComponent,
+    MatGridListModule,
+    MatProgressBarModule,
+  ],
   templateUrl: './get-api.component.component.html',
   styleUrl: './get-api.component.component.css',
 })
@@ -23,11 +47,16 @@ export class GetApiComponentComponent {
   //////////////////////////////GET
   dataSource: any[] = [];
   store: any[] = [];
-  sharedStore:any[]=[];
-  sharedStoreData:any[]=[];
-  displayedColumns: string[] = ['ordered','approved','placed','test','pending','available','deliver'];
-
-  constructor(private http: HttpClient, private fb: FormBuilder, private sharedService: SharedService) {}
+  sharedStore: any[] = [];
+  sharedStoreData: any[] = [];
+  displayedColumns: string[] = [  'ordered',  'approved',  'placed',  'test',  'pending',  'available',  'deliver'];
+  isApi: boolean = false;
+  isLoading = () => this.isApi;
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private sharedService: SharedService
+  ) {}
   // getApiExample() {
   //   this.http
   //     .get('https://petstore3.swagger.io/api/v3/store/order')
@@ -35,13 +64,20 @@ export class GetApiComponentComponent {
   //       this.dataSource = [results];
   //     });
   // }
-    getApiExample() {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/users/1')
-      .subscribe((results: any) => {
+  getApiExample() {
+    this.isApi = true;
+
+    this.http.get('https://jsonplaceholder.typicode.com/users/1').pipe(delay(1500)).subscribe({
+      next: (results: any) => {
         this.dataSource = [results];
-      });
+        this.isApi = false; // stop spinner AFTER data arrives
+    },
+      error: () => {
+        this.isApi = false; // stop spinner on error
+      },
+    });
   }
+
   getApiExample2() {
     this.http
       .get('https://jsonplaceholder.typicode.com/users')
@@ -57,7 +93,7 @@ export class GetApiComponentComponent {
       },
       error: (err) => {
         console.error('API Error:', err);
-      }
+      },
     });
   }
   getApiSharedServiceExample2() {
@@ -68,11 +104,9 @@ export class GetApiComponentComponent {
       },
       error: (err) => {
         console.error('API Error:', err);
-      }
+      },
     });
   }
-
-
 
   ///////////////////////////////POST
   myForm!: FormGroup;
@@ -153,11 +187,11 @@ export class GetApiComponentComponent {
       departmentLogo: 'nachaniya',
     },
   ];
-  onReset(){
+  onReset() {
     this.deptObj = {
-    departmentId: "",
-    departmentName: "",
-    departmentLogo: ""
+      departmentId: '',
+      departmentName: '',
+      departmentLogo: '',
     };
   }
   onSave() {
@@ -175,35 +209,34 @@ export class GetApiComponentComponent {
     // })
 
     // Validate fields
-  if (
-    !this.deptObj.departmentId ||
-    !this.deptObj.departmentName ||
-    !this.deptObj.departmentLogo
-  ) {
-    alert("All fields are required!");
-    return;
-  }
-  // ADD OR UPDATE
-  if (this.editIndex === null) {
-    this.deptList.push({ ...this.deptObj });
-  } else {
-    this.deptList[this.editIndex] = { ...this.deptObj };
-    this.editIndex = null;
-  }
-  // Reset form
-  this.deptObj = {
-    departmentId: "",
-    departmentName: "",
-    departmentLogo: ""
-  };
-
+    if (
+      !this.deptObj.departmentId ||
+      !this.deptObj.departmentName ||
+      !this.deptObj.departmentLogo
+    ) {
+      alert('All fields are required!');
+      return;
+    }
+    // ADD OR UPDATE
+    if (this.editIndex === null) {
+      this.deptList.push({ ...this.deptObj });
+    } else {
+      this.deptList[this.editIndex] = { ...this.deptObj };
+      this.editIndex = null;
+    }
+    // Reset form
+    this.deptObj = {
+      departmentId: '',
+      departmentName: '',
+      departmentLogo: '',
+    };
   }
   editIndex: number | null = null;
   onEdit(item: any, index: number) {
-  this.deptObj = { ...item };     // Copy row data to form
-  this.editIndex = index;         // Remember which row is being edited
+    this.deptObj = { ...item }; // Copy row data to form
+    this.editIndex = index; // Remember which row is being edited
   }
   onDelete(index: number) {
-  this.deptList.splice(index, 1);
-}
+    this.deptList.splice(index, 1);
+  }
 }

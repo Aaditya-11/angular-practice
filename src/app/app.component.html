@@ -1,9 +1,12 @@
 <!-- <button mat-flat-button (click)="show1()">Component1</button>
 <button mat-flat-button (click)="show2()">Component2</button> -->
-<mat-tab-group (selectedTabChange)="onTabChange($event)">
-  <mat-tab  label="Project 1"></mat-tab>
-  <mat-tab  label="Project 2"></mat-tab>
-  <mat-tab  label="Project 3"></mat-tab>
+<mat-tab-group
+  *ngIf="router.url !== '/login'"
+  (selectedTabChange)="onTabChange($event)"
+>
+  <mat-tab label="Project 1"></mat-tab>
+  <mat-tab label="Project 2"></mat-tab>
+  <mat-tab label="Project 3"></mat-tab>
 </mat-tab-group>
 
 <!-- @if(comp1){

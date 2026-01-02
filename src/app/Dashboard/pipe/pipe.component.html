@@ -8,72 +8,120 @@
 <div class="row">
     <div class="col-3">
         Original Value - {{firstname}}
-        <br/>
-        after Pipe - {{firstname | uppercase }} 
+        <br />
+        after Pipe - {{firstname | uppercase }}
     </div>
     <div class="col-3">
         Original Value - {{firstname}}
-        <br/>
+        <br />
         after Pipe - {{firstname | lowercase }}
     </div>
     <div class="col-3">
         Original Value - {{firstname}}
-        <br/>
+        <br />
         after Pipe - {{firstname | titlecase}}
     </div>
     <div class="col-3">
         Original Value - {{currentDate}}
-        <br/>
+        <br />
         after Pipe - {{currentDate | date}}
     </div>
     <div class="col-3">
         Original Value - {{currentDate}}
-        <br/>
+        <br />
         after Pipe - {{currentDate | date: 'dd-MM-yyyy'}}
     </div>
     <div class="col-3">
         Original Value - {{currentDate}}
-        <br/>
+        <br />
         after Pipe - {{currentDate | date: 'dd/MMM/yyyy'}}
     </div>
     <div class="col-3">
         Original Value - {{price}}
-        <br/>
+        <br />
         after Pipe - {{price | currency:'INR'}}
     </div>
     <div class="col-3">
         Original Value - {{value}}
-        <br/>
+        <br />
         after Pipe - {{value | number:'1.0-2' }}
     </div>
     <div class="col-3">
         Original Value - {{profit}}
-        <br/>
+        <br />
         after Pipe - {{profit | percent:'1.2-2'}}
     </div>
     <div class="col-3">
         Original Value - {{student}}
-        <br/>
+        <br />
         after Pipe - {{student | json}}
     </div>
     <div class="col-3">
         Original Value - {{currentTime}}
-        <br/>
+        <br />
         after Pipe - {{currentTime | async }}
     </div>
     <div class="col-3">
         Original Value - {{currentTime}}
-        <br/>
+        <br />
         after Pipe - {{currentTime | async | date:'hh:mm:ss'}}
     </div>
     <div class="col-3">
         Original Value - {{student.empid}}
-        <br/>
+        <br />
         after Pipe - {{student.empid | na}}
     </div>
-        <div class="col-3">
+    <div class="col-3">
         Original Value - {{student.state}}
-        <br/>
+        <br />
         after Pipe - {{student.state | na}}
+    </div>
+</div>
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h4>ng-template in Angular</h4>
+</div>
+<div class="row">
+    <div class="col-3">
+        <!-- this will render on page -->
+        <p>Hello World</p>
+        <!-- This will not render or load in page but still saved on called will be visible -->
+        <ng-template>
+            <p>World Hello</p>
+        </ng-template>
+        <!-- Without else -->
+        <p *ngIf="isLoggedIn">Welcome User</p>
+        <!-- With else -->
+        <p *ngIf="isLogged; else use ">Welcome User</p>
+        <ng-template #use>
+            <p>Please Login</p>
+        </ng-template>
+    </div>
+    <div class="col-3">
+        <ng-template #helloTemplate>
+            <h6>Hello Aaditya 👋</h6>
+        </ng-template>
+
+        <button class="btn btn-primary" (click)="toggle()">
+            Toggle
+        </button>
+
+        <ng-container *ngIf="show">
+            <ng-container *ngTemplateOutlet="helloTemplate"></ng-container>
+        </ng-container>
+    </div>
+    <div class="col-3">
+        <ng-template #helloTemplates let-name="name" let-role="role">
+            <p>Hello {{ name }} 👋</p>
+            <p>Role: {{ role }}</p>
+        </ng-template>
+
+        <button (click)="shows = !shows">Toggle</button>
+
+        <ng-container *ngIf="shows">
+            <ng-container *ngTemplateOutlet="helloTemplates;
+      context: { name: userName, role: userRole }">
+            </ng-container>
+        </ng-container>
+
     </div>
 </div>

@@ -16,6 +16,8 @@ import { Componnent1Component } from './Segregation/componnent-1/componnent-1.co
 import { Componnent3Component } from './Segregation/componnent-3/componnent-3.component';
 import { FamilyInfoComponent } from './HashBoard/family-info/family-info.component';
 import { JobInfoComponent } from './HashBoard/job-info/job-info.component';
+import { LoginComponent } from './login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 
 // export const routes: Routes = [
@@ -95,100 +97,73 @@ import { JobInfoComponent } from './HashBoard/job-info/job-info.component';
     
 // ];
 export const routes: Routes = [
-    {
-        path:'',
-        redirectTo:'app-welcome',
-        pathMatch:'full'
-    },
-    {
-        path: 'app-welcome',
-        component: WelcomeComponent
-    },
-    {
-        path:'app-componnent-1',
-        component:Componnent1Component,
-        children: [
-      {
-        path:'',
-        redirectTo:'app-pipe',
-        pathMatch:'full'
-      },     
-      {
-         path:'app-pipe',
-        component:PipeComponent
-      },
-      {
-        path:'table',
-        component:TableComponent
-      },
-      {
-          path:'app-get-api.component',
-          component:GetApiComponentComponent
-      },
-      {
-          path:'home',
-          component:HomeComponent
-      },
-      {
-          path:'account',
-          component:AccountComponent
-      },
-      {
-          path: 'page',
-          component: PageComponent,
-          children: [
-            {
-              path: 'register',
-              component: RegisterComponent
-            }
-          ]
-      },
-      {
-          path:'register2',
-          component:Register2Component
-      },
-      {
-          path:'register3',
-          component:Register3Component
-      },
-       {
-          path:'register4',
-          component:Register4Component
-      },
-      {
-          path:'dynamic-form',
-          component:DynamicFormComponent
-      }
-      ]
-    },
-    {
-        path:'app-componnent-2',
-        component:Componnent2Component,
-        children: [
-        {
-        path:'',
-        redirectTo:'app-job-info',
-        pathMatch:'full'
-        },    
-        {
-          path:'app-job-info',
-          component: JobInfoComponent,
-        //   children: [
-        //   {
-        //     path: 'app-family-info',
-        //     component: FamilyInfoComponent
-        //   }
-        // ]
-        },
-        {
-            path: 'app-family-info',
-            component: FamilyInfoComponent
-          }
-        ]
-    },
-    {
-      path:'app-componnent-3',
-      component:Componnent3Component
-    }
 
-]
+  // LOGIN FIRST
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
+
+  // DEFAULT → LOGIN
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full'
+  // },
+
+  // WELCOME (GUARDED)
+    {
+    path: 'app-welcome',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'app-welcome',
+    component: WelcomeComponent,
+     pathMatch: 'full'
+    // canActivate: [authGuard]
+  },
+
+  // COMPONENT 1 (GUARDED)
+  {
+    path: 'app-componnent-1',
+    component: Componnent1Component,
+    // canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'app-pipe', pathMatch: 'full' },
+      { path: 'app-pipe', component: PipeComponent },
+      { path: 'table', component: TableComponent },
+      { path: 'app-get-api.component', component: GetApiComponentComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'account', component: AccountComponent },
+      {
+        path: 'page',
+        component: PageComponent,
+        children: [{ path: 'register', component: RegisterComponent }]
+      },
+      { path: 'register2', component: Register2Component },
+      { path: 'register3', component: Register3Component },
+      { path: 'register4', component: Register4Component },
+      { path: 'dynamic-form', component: DynamicFormComponent }
+    ]
+  },
+
+  // COMPONENT 2 (GUARDED)
+  {
+    path: 'app-componnent-2',
+    component: Componnent2Component,
+    // canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'app-job-info', pathMatch: 'full' },
+      { path: 'app-job-info', component: JobInfoComponent },
+      { path: 'app-family-info', component: FamilyInfoComponent }
+    ]
+  },
+
+  // COMPONENT 3 (GUARDED)
+  {
+    path: 'app-componnent-3',
+    component: Componnent3Component,
+    // canActivate: [authGuard],
+    children: []
+  }
+];

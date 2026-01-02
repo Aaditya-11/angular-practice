@@ -28,13 +28,12 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './componnent-1.component.css',
 })
 export class Componnent1Component {
-  // ngOnInit(): void {
-  //   console.log('componwnt1 loaded');
-  //       // Show progress bar for 15 seconds
-  //   setTimeout(() => {
-  //     this.loading = false;   // hide it after 15 seconds
-  //   }, 5000); // 15000 ms = 15 seconds
-  // }
+  ngOnInit(): void {
+        // Show progress bar for 15 seconds
+    setTimeout(() => {
+      this.loading = false;   // hide it after 15 seconds
+    }, 5000); // 15000 ms = 15 seconds
+  }
   // ngOnDestroy(): void {
   //   console.log('componwnt1 destroyed');
   // }
