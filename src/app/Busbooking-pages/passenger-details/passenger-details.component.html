@@ -1,0 +1,235 @@
+<div class="passenger-page">
+
+  <!-- Page Header -->
+  <div class="passenger-header">
+    <div>
+      <h2>Passenger Details</h2>
+      <p>Enter your details to continue with your booking</p>
+    </div>
+
+    <div class="booking-step">
+      <span class="active">1</span>
+      <span class="line"></span>
+      <span class="active">2</span>
+      <span class="line"></span>
+      <span>3</span>
+    </div>
+  </div>
+
+
+  <div class="passenger-content">
+
+    <!-- LEFT : BOOKING SUMMARY -->
+    <div class="booking-summary">
+
+      <div class="summary-title">
+        <h4>Booking Summary</h4>
+      </div>
+
+      <div class="bus-info">
+
+        <h3>{{ busDetails?.busName }}</h3>
+
+        <div class="route">
+          <span>
+            {{ getLocationName(busDetails?.fromLocation) }}
+          </span>
+
+          <span class="arrow">→</span>
+
+          <span>
+            {{ getLocationName(busDetails?.toLocation) }}
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="summary-details">
+
+        <div class="detail-item">
+          <span class="label">Travel Date</span>
+          <strong>{{ busDetails?.travelDate }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Departure</span>
+          <strong>{{ busDetails?.departureTime }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Selected Seats</span>
+          <strong>{{ selectedSeats.join(', ') }}</strong>
+        </div>
+
+      </div>
+
+
+      <div class="fare-box">
+
+        <span>Total Fare</span>
+
+        <strong>
+          ₹{{ totalFare }}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT : PASSENGER FORM -->
+    <div class="passenger-form-card">
+
+      <div class="form-title">
+        <h4>Passenger Information</h4>
+        <p>Please enter your details below</p>
+      </div>
+
+
+      <form
+        #passengerForm="ngForm"
+        (ngSubmit)="continueToPayment(passengerForm)"
+      >
+
+        <!-- FULL NAME -->
+        <div class="form-group">
+
+          <label>Full Name</label>
+
+          <input
+            type="text"
+            name="fullName"
+            class="form-control"
+            placeholder="Enter your full name"
+            [(ngModel)]="passenger.fullName"
+            required
+            minlength="3"
+            #fullName="ngModel"
+          >
+
+          @if (fullName.invalid && fullName.touched) {
+
+            <small class="error">
+              Full name is required and must contain at least 3 characters.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- ADDRESS -->
+        <div class="form-group">
+
+          <label>Address</label>
+
+          <textarea
+            name="address"
+            class="form-control"
+            placeholder="Enter your address"
+            rows="3"
+            [(ngModel)]="passenger.address"
+            required
+            minlength="10"
+            #address="ngModel"
+          ></textarea>
+
+          @if (address.invalid && address.touched) {
+
+            <small class="error">
+              Please enter your address.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- PHONE + EMAIL -->
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>Phone Number</label>
+
+            <input
+              type="tel"
+              name="phone"
+              class="form-control"
+              placeholder="10 digit mobile number"
+              [(ngModel)]="passenger.phone"
+              required
+              pattern="[0-9]{10}"
+              #phone="ngModel"
+            >
+
+            @if (phone.invalid && phone.touched) {
+
+              <small class="error">
+                Enter a valid 10-digit phone number.
+              </small>
+
+            }
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Email Address</label>
+
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter your email"
+              [(ngModel)]="passenger.email"
+              required
+              email
+              #email="ngModel"
+            >
+
+            @if (email.invalid && email.touched) {
+
+              <small class="error">
+                Enter a valid email address.
+              </small>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+        <div class="form-buttons">
+
+          <button
+            type="button"
+            class="back-btn"
+            (click)="goBack()"
+          >
+            ← BACK
+          </button>
+
+
+          <button
+            type="submit"
+            class="continue-btn"
+            [disabled]="passengerForm.invalid"
+          >
+            CONTINUE TO PAYMENT
+            →
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

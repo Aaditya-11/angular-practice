@@ -1,0 +1,156 @@
+.driver {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.seat.reserved{
+    background-color: grey;
+    cursor: not-allowed;
+}
+.seat.selected{
+    background-color: red;
+}
+.seat.available {
+    background-color:  #fff;
+}
+.seat{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-form{
+    background-color: #f05a58;
+    padding: 20 px;
+    border: radius 40px;
+}
+.search-form .form-control{
+    border-radius: 20px;
+}
+.search-form button{
+    border-radius: 20 px;
+}
+.search-form .input-text{
+    background-color: transparent;
+    border:none;
+}
+.bus-layout{
+    background-color: #f8f9fa;
+    padding:20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: auto;
+}
+.about-modal {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.about-modal .modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+.about-modal .modal-footer {
+    border-top: 1px solid #eee;
+}
+
+.about-icon {
+    font-size: 50px;
+}
+
+.about-modal p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.about-features {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.about-features div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.about-features i {
+    font-size: 25px;
+}
+.shinde-logo {
+    width: 115px;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+}
+.help-info {
+    margin-top: 25px;
+}
+
+.help-info i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.help-info p {
+    margin-top: 5px;
+}
+.offer-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px;
+    margin-bottom: 12px;
+
+    border: 1px solid #eee;
+    border-radius: 10px;
+
+    background-color: #fff;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.offer-icon {
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+}
+
+.offer-details {
+    flex: 1;
+}
+
+.offer-details h5 {
+    margin: 0 0 4px;
+    color: #dc3545;
+    font-weight: 700;
+}
+
+.offer-details p {
+    margin: 0 0 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.offer-code {
+    display: inline-block;
+
+    padding: 4px 10px;
+
+    border: 1px dashed #dc3545;
+    border-radius: 5px;
+
+    color: #dc3545;
+    font-size: 12px;
+    font-weight: 700;
+
+    background-color: #fff5f5;
+}

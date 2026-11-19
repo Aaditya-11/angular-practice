@@ -1,0 +1,230 @@
+/* ================================
+   SEARCH FORM
+   ================================ */
+
+.search-form {
+    background: rgba(255, 90, 95, 0.45) !important;
+
+    border-radius: 50px !important;
+    padding: 16px 20px !important;
+
+    /* Glass effect */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/* From / To / Date fields */
+
+.search-form .form-select,
+.search-form .form-control {
+    background-color: rgba(255, 255, 255, 0.90) !important;
+
+    border: none !important;
+    border-radius: 10px !important;
+
+    min-height: 45px;
+}
+
+
+/* Input group */
+
+.search-form .input-group-text {
+    background-color: rgba(255, 255, 255, 0.90) !important;
+    border: none !important;
+}
+
+
+/* Search button */
+
+.search-form button {
+    border-radius: 30px !important;
+
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.90) !important;
+    color: #e53935 !important;
+
+    border: none !important;
+
+    min-height: 45px;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Search button hover */
+
+.search-form button:hover {
+    background: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Swap icon */
+
+.search-form i {
+    color: #ffffff !important;
+
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ================================
+   BUS HERO / BACKGROUND
+   ================================ */
+
+.bus-hero {
+    width: 100%;
+    height: 500px;
+
+    background-image: url('/bus2-image.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Content over image */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    transform: translateY(80px);
+}
+
+
+/* ================================
+   DRIVER
+   ================================ */
+
+.driver {
+    width: 30px;
+    height: 30px;
+
+    margin-right: 10px;
+}
+
+
+/* ================================
+   SEATS
+   ================================ */
+
+.seat {
+    width: 30px;
+    height: 30px;
+
+    margin: 5px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/* Reserved seat */
+
+.seat.reserved {
+    background-color: grey;
+
+    cursor: not-allowed;
+}
+
+
+/* Selected seat */
+
+.seat.selected {
+    background-color: red;
+}
+
+
+/* Available seat */
+
+.seat.available {
+    background-color: #fff;
+}
+
+
+/* ================================
+   BUS LAYOUT
+   ================================ */
+
+.bus-layout {
+    background-color: #f8f9fa;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    width: 400px;
+
+    margin: auto;
+}
+
+
+/* ================================
+   BUS RESULT CARDS
+   ================================ */
+
+#buses-list .card {
+    border: none;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+
+    transition: all 0.2s ease;
+}
+
+
+#buses-list .card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+
+    .bus-hero {
+        height: auto;
+
+        min-height: 550px;
+
+        padding: 40px 0;
+    }
+
+    .search-form {
+        border-radius: 20px !important;
+
+        padding: 15px !important;
+    }
+
+    .search-form .row {
+        row-gap: 10px;
+    }
+
+    .search-form i {
+        display: none;
+    }
+}

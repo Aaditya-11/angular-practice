@@ -1,0 +1,132 @@
+<div class="booking-container">
+
+    <!-- Back Button -->
+    <div class="back-section">
+        <button class="btn btn-outline-danger" (click)="goBack()">
+            ← BACK
+        </button>
+    </div>
+
+
+    <!-- Bus Info -->
+    @if (busDetails) {
+
+    <div class="bus-header">
+
+        <h5>{{ busDetails.busName }}</h5>
+
+        <p>
+            {{ getFromName(busDetails.fromLocation) }}
+            →
+            {{ getToName(busDetails.toLocation) }}
+
+            |
+
+            {{ busDetails.departureTime }}
+        </p>
+
+    </div>
+
+    }
+
+
+    <!-- Seat Legend -->
+    <div class="seat-legend">
+
+        <span>
+            <i class="seat available"></i>
+            Available
+        </span>
+
+        <span>
+            <i class="seat selected"></i>
+            Selected
+        </span>
+
+        <span>
+            <i class="seat booked"></i>
+            Booked
+        </span>
+
+    </div>
+
+
+    <!-- Bus Layout -->
+    <div class="bus-layout">
+
+        <!-- Driver -->
+        <div class="driver">
+            🧑‍✈️ Driver
+        </div>
+
+
+        @for (row of seatRows; track $index) {
+
+        <div class="seat-row">
+
+            <!-- Seat 1 -->
+            <div class="seat" [class.available]="isAvailable(row[0]) && !isSelected(row[0])"
+                [class.selected]="isSelected(row[0])" [class.booked]="!isAvailable(row[0])"
+                (click)="toggleSeat(row[0])">
+
+                {{ row[0] }}
+
+            </div>
+
+
+            <!-- Seat 2 -->
+            <div class="seat" [class.available]="isAvailable(row[1]) && !isSelected(row[1])"
+                [class.selected]="isSelected(row[1])" [class.booked]="!isAvailable(row[1])"
+                (click)="toggleSeat(row[1])">
+
+                {{ row[1] }}
+
+            </div>
+
+
+            <!-- Aisle -->
+            <div class="aisle"></div>
+
+
+            <!-- Seat 3 -->
+            <div class="seat" [class.available]="isAvailable(row[2]) && !isSelected(row[2])"
+                [class.selected]="isSelected(row[2])" [class.booked]="!isAvailable(row[2])"
+                (click)="toggleSeat(row[2])">
+
+                {{ row[2] }}
+
+            </div>
+
+
+            <!-- Seat 4 -->
+            <div class="seat" [class.available]="isAvailable(row[3]) && !isSelected(row[3])"
+                [class.selected]="isSelected(row[3])" [class.booked]="!isAvailable(row[3])"
+                (click)="toggleSeat(row[3])">
+
+                {{ row[3] }}
+
+            </div>
+
+        </div>
+
+        }
+    </div>
+
+
+    <div class="fare-section">
+
+        <strong>
+            Total: INR {{ totalFare }}
+        </strong>
+
+    </div>
+
+
+    <button class="btn btn-danger" [disabled]="selectedSeats.length === 0" (click)="proceed()">
+
+        PROCEED
+
+    </button>
+
+</div>
+

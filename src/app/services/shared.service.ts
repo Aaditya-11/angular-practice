@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MasterService } from '../service/master.service';
+import { of } from 'rxjs';
+import { Bus } from '../models/bus';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
   apiUrl:string = 'https://jsonplaceholder.typicode.com';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private masterService: MasterService) {}
 
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl + '/users');
@@ -15,6 +18,12 @@ export class SharedService {
   getData(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl + '/posts');
   }
+  getBusById(busId: number): Observable<Bus | undefined> {
+  return of(
+    this.masterService.getSearchedBuses()
+      .find(bus => bus.busId === busId)
+  );
+}
 
   jobData: any = {};
   familyData: any = {};
