@@ -126,3 +126,28 @@ cd aaditya_training
 npm install
 npm start
 App will run at:http://localhost:4200/
+ node -v: v22.19.0 
+ ng version:
+ 
+Angular CLI: 18.2.21
+Node: 22.19.0
+Package Manager: npm 10.9.3
+OS: win32 x64
+
+Angular: 18.2.14
+... animations, cdk, common, compiler, compiler-cli, core, forms
+... material, platform-browser, platform-browser-dynamic
+... platform-server, router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1802.21
+@angular-devkit/build-angular   18.2.21
+@angular-devkit/core            18.2.21
+@angular-devkit/schematics      18.2.21
+@angular/cli                    18.2.21
+@angular/ssr                    18.2.21
+@schematics/angular             18.2.21
+rxjs                            7.8.2
+typescript                      5.5.4
+zone.js                         0.14.10
