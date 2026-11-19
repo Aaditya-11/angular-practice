@@ -18,6 +18,10 @@ import { FamilyInfoComponent } from './HashBoard/family-info/family-info.compone
 import { JobInfoComponent } from './HashBoard/job-info/job-info.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { BookingComponent } from './Busbooking-pages/booking/booking.component';
+import { SearchComponent } from './Busbooking-pages/search/search.component';
+import { PassengerDetailsComponent } from './Busbooking-pages/passenger-details/passenger-details.component';
+import { PaymentComponent } from './Busbooking-pages/payment/payment.component';
 
 
 // export const routes: Routes = [
@@ -99,17 +103,17 @@ import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
 
   // LOGIN FIRST
-  // {
-  //   path: 'login',
-  //   component: LoginComponent
-  // },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
 
   // DEFAULT → LOGIN
-  // {
-  //   path: '',
-  //   redirectTo: 'login',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
 
   // WELCOME (GUARDED)
     {
@@ -119,15 +123,15 @@ export const routes: Routes = [
   {
     path: 'app-welcome',
     component: WelcomeComponent,
-     pathMatch: 'full'
-    // canActivate: [authGuard]
+     pathMatch: 'full',
+    canActivate: [authGuard]
   },
 
   // COMPONENT 1 (GUARDED)
   {
     path: 'app-componnent-1',
     component: Componnent1Component,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'app-pipe', pathMatch: 'full' },
       { path: 'app-pipe', component: PipeComponent },
@@ -135,9 +139,7 @@ export const routes: Routes = [
       { path: 'app-get-api.component', component: GetApiComponentComponent },
       { path: 'home', component: HomeComponent },
       { path: 'account', component: AccountComponent },
-      {
-        path: 'page',
-        component: PageComponent,
+      {path: 'page', component: PageComponent,
         children: [{ path: 'register', component: RegisterComponent }]
       },
       { path: 'register2', component: Register2Component },
@@ -151,7 +153,7 @@ export const routes: Routes = [
   {
     path: 'app-componnent-2',
     component: Componnent2Component,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'app-job-info', pathMatch: 'full' },
       { path: 'app-job-info', component: JobInfoComponent },
@@ -163,7 +165,14 @@ export const routes: Routes = [
   {
     path: 'app-componnent-3',
     component: Componnent3Component,
-    // canActivate: [authGuard],
-    children: []
+    canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'app-search', pathMatch: 'full' },
+      { path:'app-search', component: SearchComponent},
+      { path: 'app-booking/:busId', component: BookingComponent},
+      { path:'app-passenger-details/:busId', component: PassengerDetailsComponent },
+      { path:'app-payment/:busId', component: PaymentComponent}
+    ]
   }
+  // parent-Child,SharedService,inject
 ];

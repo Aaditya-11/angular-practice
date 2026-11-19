@@ -1,0 +1,878 @@
+.payment-page {
+  min-height: calc(100vh - 70px);
+  background: #f5f5f5;
+  padding: 35px 6%;
+}
+
+
+/* HEADER */
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.payment-header h2 {
+  margin: 0;
+  font-weight: 700;
+  color: #222;
+}
+
+.payment-header p {
+  margin: 6px 0 0;
+  color: #777;
+}
+
+
+/* STEPS */
+
+.booking-step {
+  display: flex;
+  align-items: center;
+}
+
+.booking-step span:not(.line) {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+
+  background: #ddd;
+  color: #777;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+}
+
+.booking-step .active,
+.booking-step .completed {
+  background: #d71920;
+  color: white;
+}
+
+.booking-step .line {
+  width: 45px;
+  height: 2px;
+  background: #ddd;
+}
+
+.booking-step .completed-line {
+  background: #d71920;
+}
+
+
+/* MAIN CONTENT */
+
+.payment-content {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 25px;
+}
+
+
+/* BOOKING SUMMARY */
+
+.booking-summary {
+  background: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+
+  height: fit-content;
+}
+
+.summary-title {
+  background: #d71920;
+
+  color: white;
+
+  padding: 18px 22px;
+}
+
+.summary-title h4 {
+  margin: 0;
+}
+
+
+/* BUS */
+
+.bus-info {
+  padding: 25px 22px 15px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.bus-info h3 {
+  margin: 0 0 15px;
+
+  font-weight: 700;
+}
+
+.route {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  font-weight: 600;
+
+  color: #444;
+}
+
+.arrow {
+  color: #d71920;
+
+  font-size: 22px;
+}
+
+
+/* DETAILS */
+
+.summary-details {
+  padding: 20px 22px;
+}
+
+.detail-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #eee;
+
+  gap: 20px;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #777;
+}
+
+.detail-item strong {
+  color: #222;
+
+  text-align: right;
+}
+
+
+/* FARE */
+
+.fare-box {
+  margin: 0 22px 22px;
+
+  padding: 18px;
+
+  background: #fff3f3;
+
+  border: 1px solid #ffd6d6;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.fare-box strong {
+  font-size: 24px;
+
+  color: #d71920;
+}
+
+
+/* PAYMENT CARD */
+
+.payment-card {
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 30px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* TITLE */
+
+.payment-title {
+  border-bottom: 1px solid #eee;
+
+  padding-bottom: 18px;
+
+  margin-bottom: 30px;
+}
+
+.payment-title h4 {
+  margin: 0;
+
+  font-weight: 700;
+}
+
+.payment-title p {
+  margin: 6px 0 0;
+
+  color: #777;
+}
+
+
+/* SECURE PAYMENT */
+
+.secure-payment {
+  text-align: center;
+
+  padding: 35px 20px;
+
+  background: #fff8f8;
+
+  border: 1px solid #ffe0e0;
+
+  border-radius: 10px;
+}
+
+.secure-icon {
+  font-size: 42px;
+
+  margin-bottom: 12px;
+}
+
+.secure-payment h3 {
+  margin: 0 0 10px;
+
+  font-weight: 700;
+}
+
+.secure-payment p {
+  max-width: 450px;
+
+  margin: auto;
+
+  color: #777;
+
+  line-height: 1.6;
+}
+
+
+/* AMOUNT */
+
+.amount {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+
+  margin-bottom: 18px;
+}
+
+.amount span {
+  color: #555;
+
+  font-weight: 600;
+}
+
+.amount strong {
+  font-size: 25px;
+
+  color: #d71920;
+}
+
+
+/* PAY BUTTON */
+
+.pay-btn {
+  width: 100%;
+
+  padding: 15px;
+
+  background: #d71920;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.pay-btn:hover {
+  background: #b9141a;
+}
+
+
+/* PAYMENT NOTE */
+
+.payment-note {
+  text-align: center;
+
+  margin-top: 15px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .payment-page {
+    padding: 25px 15px;
+  }
+
+  .payment-header {
+    display: block;
+  }
+
+  .booking-step {
+    margin-top: 20px;
+  }
+
+  .payment-content {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/*  */
+/* =========================================
+   PAYMENT SUCCESS SECTION
+   ========================================= */
+
+.success-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 45px 20px 60px;
+  box-sizing: border-box;
+}
+
+.success-card {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 45px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-top: 6px solid #d71920;
+}
+
+
+/* SUCCESS ICON */
+
+.success-icon {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: #d71920;
+  color: #ffffff;
+
+  font-size: 42px;
+  font-weight: bold;
+
+  box-shadow: 0 6px 18px rgba(215, 25, 32, 0.3);
+}
+
+
+/* SUCCESS TITLE */
+
+.success-card h2 {
+  margin: 0;
+  color: #d71920;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.success-message {
+  margin: 10px 0 30px;
+  color: #666;
+  font-size: 15px;
+}
+
+
+/* PAYMENT DETAILS */
+
+.success-details {
+  width: 100%;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  background: #fafafa;
+}
+
+.success-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 18px;
+
+  border-bottom: 1px solid #eeeeee;
+  gap: 20px;
+}
+
+.success-detail:last-child {
+  border-bottom: none;
+}
+
+.success-detail span {
+  color: #777;
+  font-size: 14px;
+}
+
+.success-detail strong {
+  color: #222;
+  font-size: 15px;
+  text-align: right;
+  word-break: break-word;
+}
+
+
+/* AMOUNT */
+
+.success-amount {
+  margin-top: 25px;
+  padding: 18px 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 12px;
+
+  background: #fff1f1;
+  border: 1px solid #ffd4d4;
+}
+
+.success-amount span {
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.success-amount strong {
+  color: #d71920;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* SUCCESS NOTE */
+
+.success-note {
+  margin: 25px 0 0;
+  color: #555;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .success-content {
+    padding: 25px 15px 40px;
+  }
+
+  .success-card {
+    padding: 30px 20px;
+  }
+
+  .success-card h2 {
+    font-size: 25px;
+  }
+
+  .success-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .success-detail strong {
+    text-align: left;
+  }
+
+  .success-amount {
+    padding: 16px;
+  }
+
+  .success-amount strong {
+    font-size: 21px;
+  }
+}
+/* =========================================
+   SUCCESS ACTION BUTTONS
+   ========================================= */
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.download-ticket-btn,
+.main-page-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+
+/* DOWNLOAD TICKET */
+
+.download-ticket-btn {
+  background: #d71920;
+  color: #ffffff;
+}
+
+.download-ticket-btn:hover {
+  background: #b9141a;
+  transform: translateY(-1px);
+}
+
+
+/* MAIN PAGE */
+
+.main-page-btn {
+  background: #ffffff;
+  color: #d71920;
+  border: 2px solid #d71920;
+}
+
+.main-page-btn:hover {
+  background: #fff1f1;
+  transform: translateY(-1px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .download-ticket-btn,
+  .main-page-btn {
+    width: 100%;
+  }
+
+}
+/* =========================================
+   OFFERS & DISCOUNTS
+   ========================================= */
+
+.offers-section {
+  margin-top: 25px;
+  padding: 18px;
+  background: #fff8f8;
+  border: 1px solid #f1d5d5;
+  border-radius: 12px;
+}
+
+
+/* OFFERS TITLE */
+
+.offers-title {
+  margin-bottom: 15px;
+}
+
+.offers-title h4 {
+  margin: 0;
+  color: #d71920;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.offers-title p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 13px;
+}
+
+
+/* INDIVIDUAL OFFER */
+
+.offer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 14px;
+  margin-bottom: 10px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.2s ease;
+}
+
+.offer-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.offer-item:hover {
+  border-color: #f0bcbc;
+  box-shadow: 0 4px 10px rgba(215, 25, 32, 0.08);
+  transform: translateY(-1px);
+}
+
+
+/* OFFER INFORMATION */
+
+.offer-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.offer-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.offer-heading strong {
+  color: #d71920;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.offer-info p {
+  margin: 5px 0 8px;
+
+  color: #666;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* COUPON CODE */
+
+.offer-code {
+  display: inline-block;
+
+  padding: 4px 9px;
+
+  color: #d71920;
+  background: #fff1f1;
+
+  border: 1px dashed #d71920;
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+
+/* APPLY BUTTON */
+
+.apply-offer-btn {
+  flex-shrink: 0;
+
+  padding: 8px 13px;
+
+  border: 1px solid #d71920;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #d71920;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.apply-offer-btn:hover:not(:disabled) {
+  background: #d71920;
+  color: #ffffff;
+}
+
+.apply-offer-btn:disabled {
+  background: #d71920;
+  color: #ffffff;
+  border-color: #d71920;
+  cursor: default;
+}
+
+
+/* OFFER MESSAGE */
+
+.offer-message {
+  margin-top: 12px;
+  padding: 10px 12px;
+
+  background: #fff1f1;
+  border-left: 4px solid #d71920;
+  border-radius: 5px;
+
+  color: #555;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   AMOUNT SECTION
+   ========================================= */
+
+.amount-section {
+  margin-top: 18px;
+  padding: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 9px;
+
+  color: #555;
+  font-size: 14px;
+}
+
+.amount-row strong {
+  color: #333;
+}
+
+.discount-row {
+  color: #279447;
+}
+
+.discount-row strong {
+  color: #279447;
+}
+
+.discount-row small {
+  font-size: 10px;
+  color: #888;
+}
+
+.amount-divider {
+  height: 1px;
+  margin: 12px 0;
+
+  background: #eeeeee;
+}
+
+.final-amount {
+  margin-bottom: 0;
+}
+
+.final-amount span {
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.final-amount strong {
+  color: #d71920;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .offers-section {
+    padding: 14px;
+  }
+
+  .offer-item {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .offer-heading strong {
+    font-size: 15px;
+  }
+
+  .offer-info p {
+    font-size: 11px;
+  }
+
+  .apply-offer-btn {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .amount-row {
+    font-size: 13px;
+  }
+
+  .final-amount strong {
+    font-size: 19px;
+  }
+}
+.remove-offer-btn {
+  background: #ffffff;
+  color: #777;
+  border-color: #999;
+}
+
+.remove-offer-btn:hover {
+  background: #f5f5f5;
+  color: #d71920;
+  border-color: #d71920;
+}

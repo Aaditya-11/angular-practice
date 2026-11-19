@@ -1,0 +1,142 @@
+
+
+    
+    <section class="bus-hero">
+        <div class="container hero-content">
+            <form class="search-form d-flex align-items-center shadow-lg px-3 py-2 rounded-pill" #searchForm="ngForm"
+                (ngSubmit)="onSearch()">
+                <div class="row g-2 w-100 align-items-center">
+
+                    <!-- From Location -->
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <select class="form-select" name="fromLocation" [(ngModel)]="searchObj.fromLocation"
+                                (ngModelChange)="onFromChange()" required>
+                                <option value="">From</option>
+                                @for (item of locations$ | async; track $index) {
+                                <option [ngValue]="item.locationId">
+                                    {{ item.locationName }}
+                                </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Swap Icon -->
+                    <div class="col-md-1 text-center">
+                        <i class="bi bi-arrow-left-right fs-4 text-white"></i>
+                    </div>
+
+                    <!-- To Location -->
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <select class="form-select" name="toLocation" [(ngModel)]="searchObj.toLocation"
+                                (ngModelChange)="onToChange()" required>
+                                <option value="">To</option>
+                                @for (item of locations$ | async; track $index) {
+                                <option [ngValue]="item.locationId">
+                                    {{ item.locationName }}
+                                </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Date -->
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="travelDate" [(ngModel)]="searchObj.travelDate" [min]="today"
+                                required />
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <div class="col-md-2">
+                        <button type="submit" [disabled]="searchForm.invalid"
+                            class="btn btn-light text-danger fw-bold w-100 rounded-pill">SEARCH
+                            BUSES</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="container my-4">
+        <!-- <h2>Available Buses</h2> -->
+        @for (item of busList; track $index){
+        <div class="card mb-3">
+            <div class="row align-items-center text-center">
+
+                <!-- Bus Info -->
+                <div class="col-md-3 text-start ps-4">
+                    <h5 class="mb-1">{{item.busName}}</h5>
+                    <small class="text-muted">A/C Sleeper (2+1)</small>
+                </div>
+
+                <!-- Departure -->
+                <div class="col-md-1">
+                    <p>
+                        <strong>{{item.departureTime}}</strong>
+                    </p>
+                    <div class="text-muted small">Departure</div>
+                </div>
+
+                <!-- Duration -->
+                <!-- <div class="col-md-1">
+                    <strong>7h 55m</strong>
+                    <div class="text-muted small">Duration</div>
+                </div> -->
+                <div class="col-md-1">
+                    <strong>
+                        {{ formatDuration(getDurationMinutes(item.fromLocation, item.toLocation)) }}
+                    </strong>
+                    <div class="text-muted small">Duration</div>
+                </div>
+
+                <!-- Arrival -->
+                <!-- <div class="col-md-1">
+                    <strong>{{item.arrivalTime}}</strong>
+                    <div class="text-muted small">Arrival</div>
+                    <div class="text-danger small">18-Aug</div>
+                </div> -->
+                <div class="col-md-1">
+                    <strong>
+                        {{ getArrivalTime(item.departureTime, item.fromLocation, item.toLocation) }}
+                    </strong>
+                    <div class="text-muted small">Arrival</div>
+
+                    <div class="text-danger small">
+                        {{ getArrivalDayLabel(item.departureTime, item.fromLocation, item.toLocation) }}
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="col-md-1">
+                    <strong>{{item.rating}}⭐</strong>
+                    <div class="text-muted small">567 Ratings</div>
+                </div>
+
+                <!-- Price & Seats -->
+                <div class="col-md-2">
+                    <strong>INR {{item.fare}}</strong>
+                    <div class="text-muted small">{{item.seatsAvailable}} Seats available</div>
+                </div>
+                 <!-- <div class="col-md-2">
+                    <strong>₹{{ getFare(item.fromLocation, item.toLocation) }}</strong>
+                    <div class="text-muted small">{{item.seatsAvailable}} Seats available</div>
+                </div> -->
+
+                <!-- Button -->
+                <div class="col-md-2 text-end pe-4">
+                    <button class="btn btn-danger" [routerLink]="['/app-componnent-3/app-booking',item.busId]">VIEW SEATS</button>
+                </div>
+
+            </div>
+        </div>
+        }
+
+    </section>
+

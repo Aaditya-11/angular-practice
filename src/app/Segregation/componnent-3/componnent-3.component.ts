@@ -2,48 +2,57 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-componnent-3',
   standalone: true,
-  imports: [RouterOutlet,MatProgressBar,CommonModule],
+  imports: [RouterOutlet, MatProgressBar, CommonModule, FormsModule],
   templateUrl: './componnent-3.component.html',
-  styleUrl: './componnent-3.component.css'
+  styleUrl: './componnent-3.component.css',
 })
 export class Componnent3Component {
-  loading = true;  // show loader initially
+  loading = true; // show loader initially
+  modalType: 'about' | 'help' | 'offers' = 'about';
   ngOnInit(): void {
-        // Show progress bar for 15 seconds
+    // Show progress bar for 15 seconds
     setTimeout(() => {
-      this.loading = false;   // hide it after 15 seconds
+      this.loading = false; // hide it after 15 seconds
     }, 5000); // 15000 ms = 15 seconds
   }
-  isLoginForm: boolean = false;
-  registerObj: any = {
-  "userId": 0,
-  "userName": "",
-  "emailId": "",
-  "fullName": "",
-  "role": "",
-  "createdDate": new Date(),
-  "password": "",
-  "projectName": "",
-  "refreshToken": "",
-  "refreshTokenExpiryTime": new Date() 
-  }
-  openModal(){
-    const model = document.getElementById("myModal");
-    if(model !=null){
-      model.style.display ='block'
+
+  openAboutModal(): void {
+    this.modalType = 'about';
+
+    const modal = document.getElementById('myModal');
+
+    if (modal != null) {
+      modal.style.display = 'block';
     }
   }
-  closeModal(){
-    const model = document.getElementById("myModal");
-    if(model !=null){
-      model.style.display ='none'
+  openHelpModal(): void {
+    this.modalType = 'help';
+
+    const modal = document.getElementById('myModal');
+
+    if (modal != null) {
+      modal.style.display = 'block';
     }
   }
+  openOffersModal(): void {
+    this.modalType = 'offers';
 
+    const modal = document.getElementById('myModal');
 
-  
+    if (modal != null) {
+      modal.style.display = 'block';
+    }
+  }
+  closeModal(): void {
+    const modal = document.getElementById('myModal');
+
+    if (modal != null) {
+      modal.style.display = 'none';
+    }
+  }
 }

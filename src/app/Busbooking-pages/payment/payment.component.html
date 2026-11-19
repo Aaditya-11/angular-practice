@@ -1,0 +1,517 @@
+<div class="payment-page">
+
+    <!-- HEADER -->
+    <div class="payment-header">
+
+        <div>
+            <h2>
+                {{ paymentSuccess ? 'Payment Successful' : 'Payment' }}
+            </h2>
+
+            <p>
+                {{
+                paymentSuccess
+                ? 'Your payment has been completed successfully'
+                : 'Complete your payment to confirm your booking'
+                }}
+            </p>
+        </div>
+
+
+        <!-- BOOKING STEPS -->
+        <div class="booking-step">
+
+            <span class="completed">✓</span>
+
+            <span class="line completed-line"></span>
+
+            <span class="completed">✓</span>
+
+            <span class="line completed-line"></span>
+
+            <span [class.completed]="paymentSuccess" [class.active]="!paymentSuccess">
+                {{ paymentSuccess ? '✓' : '3' }}
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- PAYMENT SCREEN -->
+    <!-- ========================= -->
+
+    <div class="payment-content" *ngIf="!paymentSuccess">
+
+
+        <!-- LEFT SIDE -->
+        <div class="booking-summary">
+
+            <div class="summary-title">
+                <h4>Booking Summary</h4>
+            </div>
+
+
+            <div class="bus-info">
+
+                <h3>
+                    {{ busDetails?.busName }}
+                </h3>
+
+                <div class="route">
+
+                    <span>
+                        {{ getLocationName(busDetails?.fromLocation) }}
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                    <span>
+                        {{ getLocationName(busDetails?.toLocation) }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-details">
+
+                <!-- DATE -->
+                <div class="detail-item">
+
+                    <span class="label">
+                        Travel Date
+                    </span>
+
+                    <strong>
+                        {{ busDetails?.travelDate }}
+                    </strong>
+
+                </div>
+
+
+                <!-- DEPARTURE -->
+                <div class="detail-item">
+
+                    <span class="label">
+                        Departure
+                    </span>
+
+                    <strong>
+                        {{ busDetails?.departureTime }}
+                    </strong>
+
+                </div>
+
+
+                <!-- PASSENGER -->
+                <div class="detail-item">
+
+                    <span class="label">
+                        Passenger
+                    </span>
+
+                    <strong>
+                        {{ passenger?.fullName }}
+                    </strong>
+
+                </div>
+
+
+                <!-- SEATS -->
+                <div class="detail-item">
+
+                    <span class="label">
+                        Selected Seats
+                    </span>
+
+                    <strong>
+                        {{ selectedSeats.join(', ') }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- FARE -->
+            <div class="fare-box">
+
+                <span>
+                    Amount Payable
+                </span>
+
+                <strong>
+                    ₹{{ totalFare }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE -->
+        <div class="payment-card">
+
+            <div class="payment-title">
+
+                <h4>
+                    Secure Payment
+                </h4>
+
+                <p>
+                    Complete your payment securely using Razorpay
+                </p>
+
+            </div>
+
+
+            <!-- PAYMENT INFORMATION -->
+
+            <div class="secure-payment">
+
+                <div class="secure-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Pay Securely
+                </h3>
+
+                <p>
+                    You will be redirected to Razorpay's secure
+                    checkout to complete your payment.
+                </p>
+
+            </div>
+
+            <!-- OFFERS & DISCOUNTS -->
+
+            <div class="offers-section">
+
+                <div class="offers-title">
+                    <h4>Offers & Discounts</h4>
+                    <p>Save more on your bus booking</p>
+                </div>
+
+
+                <!-- FIRST10 -->
+
+                <div class="offer-item">
+
+                    <div class="offer-info">
+
+                        <div class="offer-heading">
+                            🎉
+                            <strong>10% OFF</strong>
+                        </div>
+
+                        <p>
+                            Get 10% off on your first bus booking.
+                        </p>
+
+                        <span class="offer-code">
+                            FIRST10
+                        </span>
+
+                    </div>
+
+                    <button type="button" class="apply-offer-btn" [class.remove-offer-btn]="appliedOffer === 'FIRST10'"
+                        (click)="applyOffer('FIRST10')">
+
+                        {{ appliedOffer === 'FIRST10' ? 'REMOVE' : 'APPLY' }}
+
+                    </button>
+
+                </div>
+
+
+                <!-- WEEKEND100 -->
+
+                <div class="offer-item">
+
+                    <div class="offer-info">
+
+                        <div class="offer-heading">
+                            🚌
+                            <strong>₹100 OFF</strong>
+                        </div>
+
+                        <p>
+                            Get ₹100 off on selected weekend bookings.
+                        </p>
+
+                        <span class="offer-code">
+                            WEEKEND100
+                        </span>
+
+                    </div>
+
+                    <button type="button" class="apply-offer-btn"
+                        [class.remove-offer-btn]="appliedOffer === 'WEEKEND100'" (click)="applyOffer('WEEKEND100')">
+
+                        {{ appliedOffer === 'WEEKEND100' ? 'REMOVE' : 'APPLY' }}
+
+                    </button>
+
+                </div>
+
+
+                <!-- FAMILY20 -->
+
+                <div class="offer-item">
+
+                    <div class="offer-info">
+
+                        <div class="offer-heading">
+                            👨‍👩‍👧
+                            <strong>20% OFF</strong>
+                        </div>
+
+                        <p>
+                            Get 20% off when booking 3 or more seats.
+                        </p>
+
+                        <span class="offer-code">
+                            FAMILY20
+                        </span>
+
+                    </div>
+
+                    <button type="button" class="apply-offer-btn" [class.remove-offer-btn]="appliedOffer === 'FAMILY20'"
+                        (click)="applyOffer('FAMILY20')">
+
+                        {{ appliedOffer === 'FAMILY20' ? 'REMOVE' : 'APPLY' }}
+
+                    </button>
+
+                </div>
+
+
+                <!-- OFFER MESSAGE -->
+
+                <div class="offer-message" *ngIf="offerMessage">
+
+                    {{ offerMessage }}
+
+                </div>
+
+            </div>
+
+
+            <!-- AMOUNT -->
+
+            <div class="amount-section">
+
+                <div class="amount-row">
+
+                    <span>
+                        Original Fare
+                    </span>
+
+                    <strong>
+                        ₹{{ totalFare }}
+                    </strong>
+
+                </div>
+
+
+                <div class="amount-row discount-row" *ngIf="discount > 0">
+
+                    <span>
+                        Discount
+                        <small>({{ appliedOffer }})</small>
+                    </span>
+
+                    <strong>
+                        -₹{{ discount }}
+                    </strong>
+
+                </div>
+
+
+                <div class="amount-divider"></div>
+
+
+                <div class="amount-row final-amount">
+
+                    <span>
+                        Amount to Pay
+                    </span>
+
+                    <strong>
+                        ₹{{ finalAmount }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAY BUTTON -->
+
+            <button type="button" class="pay-btn" (click)="payNow()">
+
+                PAY ₹{{ finalAmount }}
+
+            </button>
+
+
+            <div class="payment-note">
+
+                🔒 Your payment is processed securely by Razorpay.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- PAYMENT SUCCESS SCREEN -->
+    <!-- ========================= -->
+
+    <div class="success-content" *ngIf="paymentSuccess">
+
+        <div class="success-card">
+
+            <!-- SUCCESS ICON -->
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Payment Successful!
+            </h2>
+
+            <p class="success-message">
+                Your payment has been received successfully.
+            </p>
+
+
+            <!-- PAYMENT DETAILS -->
+            <div class="success-details">
+
+                <div class="success-detail">
+
+                    <span>
+                        Payment ID
+                    </span>
+
+                    <strong>
+                        {{ paymentId }}
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail">
+
+                    <span>
+                        Passenger
+                    </span>
+
+                    <strong>
+                        {{ passenger?.fullName }}
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail">
+
+                    <span>
+                        Bus
+                    </span>
+
+                    <strong>
+                        {{ busDetails?.busName }}
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail">
+
+                    <span>
+                        Route
+                    </span>
+
+                    <strong>
+                        {{ getLocationName(busDetails?.fromLocation) }}
+                        →
+                        {{ getLocationName(busDetails?.toLocation) }}
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail">
+
+                    <span>
+                        Travel Date
+                    </span>
+
+                    <strong>
+                        {{ busDetails?.travelDate }}
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail">
+
+                    <span>
+                        Selected Seats
+                    </span>
+
+                    <strong>
+                        {{ selectedSeats.join(', ') }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+            <div class="success-amount">
+
+                <span>
+                    Amount Paid
+                </span>
+
+                <strong>
+                    ₹{{ finalAmount }}
+                </strong>
+
+            </div>
+
+
+            <p class="success-note">
+                ✓ Your payment was processed through Razorpay.
+            </p>
+            <div class="success-actions">
+
+                <button type="button" class="download-ticket-btn" (click)="downloadTicket()">
+                    ↓ Download Ticket
+                </button>
+
+                <button type="button" class="main-page-btn" (click)="goToMainPage()">
+                    Go to Main Page
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
